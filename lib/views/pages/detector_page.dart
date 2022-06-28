@@ -203,12 +203,18 @@ class _DetectorPageState extends State<DetectorPage> {
                     modalButtonBuilder(
                       'Pick From Camera',
                       Icons.camera,
-                      () => pickImage(ImageSource.camera),
+                      () {
+                        Navigator.pop(context);
+                        pickImage(ImageSource.camera);
+                      },
                     ),
                     modalButtonBuilder(
                       'Pick From Gallery',
                       Icons.photo_library,
-                      () => pickImage(ImageSource.gallery),
+                      () {
+                        Navigator.pop(context);
+                        pickImage(ImageSource.gallery);
+                      },
                     ),
                   ],
                 ),
