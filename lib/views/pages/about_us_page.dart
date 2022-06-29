@@ -30,7 +30,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                 Image.asset('assets/brain.webp'),
                 const SizedBox(height: 20),
                 const Text(
-                  "A brain tumor detection app which detects 3 different types of brain tumor and also analyses whether a operson has a brain tumor or not.",
+                  "A brain tumor detection app which detects 3 different types of brain tumor and also analyses whether a person has a brain tumor or not.",
                   style: TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 10),
