@@ -16,6 +16,7 @@ class _DetectorPageState extends State<DetectorPage> {
   File? _image;
   List? _output;
   String _result = "No Tumor";
+  bool _loading = false;
 
   final picker = ImagePicker();
 
@@ -44,9 +45,15 @@ class _DetectorPageState extends State<DetectorPage> {
 
       setState(() {
         _image = File(image.path);
+
+        _output = null;
+        _loading = true;
       });
 
+      await Future.delayed(const Duration(milliseconds: 200));
+
       detectImage(_image!);
+      _loading = false;
     } on PlatformException {
       //
     }
@@ -126,6 +133,7 @@ class _DetectorPageState extends State<DetectorPage> {
                 ),
               ),
               const SizedBox(height: 20),
+              if (_loading) const CircularProgressIndicator(),
               if (_output != null)
                 Text(
                   _result,
