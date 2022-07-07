@@ -70,16 +70,20 @@ class _DetectorPageState extends State<DetectorPage> {
 
     setState(() {
       _output = output!;
-      if (_output != null) {
-        if (_output![0]["label"] == "glioma_tumor") {
-          _result = "Glioma Tumor";
-        } else if (_output![0]["label"] == "meningioma_tumor") {
-          _result = "Meningioma Tumor";
-        } else if (_output![0]["label"] == "pituitary_tumor") {
-          _result = "Pituitary Tumor";
-        } else {
-          _result = "No Tumor Detected";
+      try {
+        if (_output != null) {
+          if (_output![0]["label"] == "glioma_tumor") {
+            _result = "Glioma Tumor";
+          } else if (_output![0]["label"] == "meningioma_tumor") {
+            _result = "Meningioma Tumor";
+          } else if (_output![0]["label"] == "pituitary_tumor") {
+            _result = "Pituitary Tumor";
+          } else if (_output![0]["label"] == "no_tumor") {
+            _result = "No Tumor Detected";
+          }
         }
+      } catch (e) {
+        _result = "Cannot Detect Tumor, Please try with a different image";
       }
     });
   }
